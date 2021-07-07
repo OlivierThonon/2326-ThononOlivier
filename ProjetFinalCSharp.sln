@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoadingFile", "DataAccessLayer\LoadingFile.csproj", "{931E3AC8-FFA9-421A-97C8-CC3B73192268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoadingFile", "LoadingFile\LoadingFile.csproj", "{931E3AC8-FFA9-421A-97C8-CC3B73192268}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "LibraryDataClass\DataAccessLayer.csproj", "{63C43E04-1CE1-444F-9DC5-FD28B44C9D50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{63C43E04-1CE1-444F-9DC5-FD28B44C9D50}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{69537C70-FC00-4CEF-8E9C-CE598AE71302}"
 EndProject
