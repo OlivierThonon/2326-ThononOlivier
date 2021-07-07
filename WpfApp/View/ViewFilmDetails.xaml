@@ -1,0 +1,83 @@
+﻿<Window x:Class="WpfApp.View.ViewFilmDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+        xmlns:local="clr-namespace:WpfApp.View"
+        mc:Ignorable="d"
+        Title="Détails du film" Height="450" Width="1200">
+    <Grid Margin="0,0,0,0">
+        <Grid HorizontalAlignment="Left" Width="280">
+            <TextBlock x:Name="TitleFilm" Text="{Binding Path=Title}" HorizontalAlignment="Left" Margin="60,35,0,0" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Top" />
+            <Image x:Name="PosterFilm" Source="{Binding Path=Poster}" HorizontalAlignment="Left" Height="100" Margin="100,150,0,0" VerticalAlignment="Top" Width="100"/>
+            <Label x:Name="label1" Content="Id : " HorizontalAlignment="Left" Margin="90,291,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="IdFilm" Content="{Binding Path=IdFilm}" HorizontalAlignment="Left" Margin="139,291,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Margin="280,0,0,0" Width="220" HorizontalAlignment="Left">
+            <Label Content="Acteurs :" Margin="0,0,0,0" FontSize="15" HorizontalAlignment="Left"/>
+            <DataGrid Margin="0,40,0,40" Width="auto" ItemsSource="{Binding Actors}" AutoGenerateColumns="false" RowHeight="20" IsReadOnly="True" HorizontalAlignment="Left">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="IsHitTestVisible" Value="false"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridCell">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.CellStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nom" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Prénom" Binding="{Binding Surname}"/>
+                    <DataGridTextColumn Header="Nombre de films" Binding="{Binding NbFilm}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Margin="520,0,0,0" Width="160" HorizontalAlignment="Left">
+            <Label Content="Genres :" Margin="0,0,0,0" FontSize="15"/>
+            <TextBlock x:Name="Genres" Margin="0,40,0,40" Width="150" HorizontalAlignment="left"/>
+        </Grid>
+        <Grid Margin="700,0,0,0" Width="250" HorizontalAlignment="Left">
+            <Label Content="Commentaires :" Margin="0,0,0,0" FontSize="15"/>
+            <DataGrid  Margin="0,40,0,40" Width="auto" ItemsSource="{Binding Comments}" AutoGenerateColumns="false" RowHeight="20" IsReadOnly="True" HorizontalAlignment="Left">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="IsHitTestVisible" Value="false"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridCell">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.CellStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Note" Binding="{Binding Rate}"/>
+                    <DataGridTextColumn Header="Commentaire" Binding="{Binding Content}"/>
+                    <DataGridTextColumn Header="Utilisateur" Binding="{Binding Username}"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Margin="950,0,0,0" Width="250" HorizontalAlignment="Left">
+            <TextBox x:Name="TextUsername" HorizontalAlignment="Left" Margin="107,36,0,0" Text="Frizzzer" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="label" Content="Username" HorizontalAlignment="Left" Margin="32,32,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label2" Content="Rate" HorizontalAlignment="Left" Margin="32,63,0,0" VerticalAlignment="Top"/>
+            <Slider x:Name="SlideRate" TickPlacement="BottomRight"  TickFrequency="1" IsSnapToTickEnabled="true" HorizontalAlignment="Left" Margin="107,67,0,0" VerticalAlignment="Top" Width="120" Minimum="0" Maximum="5"/>
+            <TextBox x:Name="TextComment" Text="Votre commentaire" TextWrapping="Wrap" MinHeight="20" MinWidth="20" HorizontalAlignment="Center" Margin="0,154,0,180" Width="159"/>
+            <Label x:Name="label3" Content="Commentaire" HorizontalAlignment="Left" Height="50" Margin="40,123,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="AjouterCommentaire" Content="Ajouter" Width="50" HorizontalAlignment="Left" Margin="45,0,0,127" Click="AjouterCommentaire_Click" Height="20" VerticalAlignment="Bottom"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,21 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        xmlns:View="clr-namespace:WpfApp.View" x:Class="WpfApp.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="950">
+    <Grid Margin="0,0,0,0">
+        <Button x:Name="BNextPage" Content="Suivant" HorizontalAlignment="Left" Margin="770,30,0,0" VerticalAlignment="Top" Click="BNextPage_Click" Width="70" Height="20"/>
+        <Button x:Name="BPreviousPage" Content="Précédent" HorizontalAlignment="Left" Margin="665,30,0,0" VerticalAlignment="Top" Click="BPreviousPage_Click" Width="70" Height="20"/>
+        <View:ViewFilm x:Name="ViewFilm" HorizontalAlignment="Left" VerticalAlignment="Top" Width="800" Margin="40,80,40,40" Height="350"/>
+        <TextBox x:Name="TextBoxRechercheFilm" HorizontalAlignment="Left" Margin="110,30,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label x:Name="label" Content="Recherche :" HorizontalAlignment="Left" Margin="35,27,0,0" VerticalAlignment="Top" Height="24"/>
+        <Button x:Name="ValiderRecherche" Content="Valider" HorizontalAlignment="Left" Margin="253,30,0,0" VerticalAlignment="Top" Width="70" Height="20" Click="ValiderRecherche_Click"/>
+        <Button x:Name="AnnulerRecherche" Content="Annuler" HorizontalAlignment="Left" Margin="333,30,0,434" Width="70" Click="AnnulerRecherche_Click"/>
+        <Button x:Name="ButtonDetails" Content="Détails" HorizontalAlignment="Left" Margin="40,445,0,0" VerticalAlignment="Top" Width="70" Height="20" Click="ButtonDetails_Click"/>
+
+    </Grid>
+</Window>
