@@ -3,8 +3,8 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <table class="table-bordered">
+<div class="text-center" >
+    <table class="table-bordered" style="margin-left: auto; margin-right: auto">
         <thead>
             <tr>
                 <th width="50">Id</th>
@@ -12,23 +12,26 @@
                 <th width="150">Titre</th>
                 <th width="100">Duree</th>
                 <th width="200">Note Moyenne</th>
-                <th width="150">Note</th>
-                <th width="200">Details</th>
-
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Films)
             {
-
-                <tr>
+                <tr height="120">
                     <th scope="row">@item.IdFilm</th>
                     <td>
-                        <img src="@item.PosterPath" width="80" alt="No poster found!" />
+                        <img src="@item.PosterPath" height="110" alt="No poster found!" />
                     </td>
                     <td>@item.Title</td>
                     <td>@item.RunTime</td>
-                    <td>@item.VoteAverage</td>
+                    @if (!Double.IsNaN(item.VoteAverage))
+                    {
+                        <td>@item.VoteAverage</td>
+                    }
+                    else
+                    {
+                        <td>Pas de vote !</td>
+                    }
                 </tr>
             }
         </tbody>
