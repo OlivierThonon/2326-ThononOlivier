@@ -7,14 +7,16 @@
         xmlns:View="clr-namespace:WpfApp.View" x:Class="WpfApp.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="950">
-    <Grid Margin="0,0,0,0">
-        <Button x:Name="BNextPage" Content="Suivant" HorizontalAlignment="Left" Margin="770,30,0,0" VerticalAlignment="Top" Click="BNextPage_Click" Width="70" Height="20"/>
-        <Button x:Name="BPreviousPage" Content="Précédent" HorizontalAlignment="Left" Margin="665,30,0,0" VerticalAlignment="Top" Click="BPreviousPage_Click" Width="70" Height="20"/>
-        <View:ViewFilm x:Name="ViewFilm" HorizontalAlignment="Left" VerticalAlignment="Top" Width="800" Margin="40,80,40,40" Height="350"/>
-        <TextBox x:Name="TextBoxRechercheFilm" HorizontalAlignment="Left" Margin="110,30,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
-        <Label x:Name="label" Content="Recherche :" HorizontalAlignment="Left" Margin="35,27,0,0" VerticalAlignment="Top" Height="24"/>
-        <Button x:Name="ValiderRecherche" Content="Valider" HorizontalAlignment="Left" Margin="253,30,0,0" VerticalAlignment="Top" Width="70" Height="20" Click="ValiderRecherche_Click"/>
-        <Button x:Name="AnnulerRecherche" Content="Annuler" HorizontalAlignment="Left" Margin="333,30,0,434" Width="70" Click="AnnulerRecherche_Click"/>
+    <Grid Height="484" VerticalAlignment="Center" HorizontalAlignment="Left" Width="950">
+        <Canvas HorizontalAlignment="Center" Height="24" Margin="0,24,0,0" VerticalAlignment="Top" Width="800">
+            <Button x:Name="BNextPage" Content="Suivant" Click="BNextPage_Click" Width="70" Height="20" Canvas.Left="730" Canvas.Top="2"/>
+            <Button x:Name="BPreviousPage" Content="Précédent" Click="BPreviousPage_Click" Width="70" Height="20" Canvas.Left="630" Canvas.Top="2"/>
+            <TextBox x:Name="TextBoxRechercheFilm" Text="" TextWrapping="Wrap" Width="120" Height="20" Canvas.Left="75" Canvas.Top="2"/>
+            <Label x:Name="label" Content="Recherche :" Height="24"/>
+            <Button x:Name="ValiderRecherche" Content="Valider" Width="70" Height="20" Click="ValiderRecherche_Click" Canvas.Left="218" Canvas.Top="2"/>
+            <Button x:Name="AnnulerRecherche" Content="Annuler" Width="70" Click="AnnulerRecherche_Click" Height="20" Canvas.Left="298" Canvas.Top="2"/>
+        </Canvas>
+        <View:ViewFilm x:Name="ViewFilm" HorizontalAlignment="Center" VerticalAlignment="Center" Width="800" Margin="0,0,0,0" Height="350"/>
         <Button x:Name="ButtonDetails" Content="Détails" HorizontalAlignment="Left" Margin="40,445,0,0" VerticalAlignment="Top" Width="70" Height="20" Click="ButtonDetails_Click"/>
 
     </Grid>

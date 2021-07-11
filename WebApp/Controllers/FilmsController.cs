@@ -11,8 +11,8 @@ namespace WebApp.Controllers
     public class FilmController : Controller
     {
         //http://localhost:5000/films/details/?index=0&numberfilmbypage=10
-        [HttpGet("details")]
-        public ActionResult GetPageOfFullFilmDetailsOrderByTitle(int index, int numberfilmbypage)
+        [HttpGet]
+        public ActionResult GetPageOfFilmOrderByTitle(int index, int numberfilmbypage)
         {
             if (numberfilmbypage == 0)
                 return BadRequest("Error in the request ! \nExemple : /films/details/?index=0&numberfilmbypage=10 || /films/details/2");

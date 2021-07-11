@@ -1,0 +1,36 @@
+﻿@model BrowserApp.Models.ListFilmModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th width="50">Id</th>
+                <th width="150">Affiche</th>
+                <th width="150">Titre</th>
+                <th width="100">Duree</th>
+                <th width="200">Note Moyenne</th>
+                <th width="150">Note</th>
+                <th width="200">Details</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Films)
+            {
+
+                <tr>
+                    <th scope="row">@item.IdFilm</th>
+                    <td>
+                        <img src="@item.PosterPath" width="80" alt="No poster found!" />
+                    </td>
+                    <td>@item.Title</td>
+                    <td>@item.RunTime</td>
+                    <td>@item.VoteAverage</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

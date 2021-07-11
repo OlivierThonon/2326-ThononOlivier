@@ -22,7 +22,7 @@ namespace WpfApp.Model
             int min = ftmp.RunTime % 60;
             int hours = ftmp.RunTime / 60;
             RunTime = hours.ToString() + "h" + min.ToString();
-            Poster = DataAccess.GetPosterFromTMDB(IdFilm);
+            Poster = DataAccess.GetPosterFromTMDB(ftmp.PosterPath);
 
             FilmType = new List<BitmapImage>();
         }

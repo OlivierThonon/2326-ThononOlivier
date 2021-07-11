@@ -23,7 +23,7 @@ namespace WpfApp
 
         public static List<FilmDTO> GetFilmPageFromApi(int index, int nbFilmByPage)
         {
-            string querytype = "films/details/";
+            string querytype = "films/";
             string query = "?index=" + index + "&numberfilmbypage=" + nbFilmByPage;
             using (var client = new WebClient())
             {
@@ -40,18 +40,12 @@ namespace WpfApp
         public static void InsertComment(int id,string Content, int Rate)
         {
             string querytype = "comments/";
-
-            var query = new
-            {
-                content = Content,
-                rate = Rate,
-                idfilm = id
-            };
-            string querystring = JsonConvert.SerializeObject(query);
+            string querystring = "?content=" + Content + "&rate=" + Rate + "&idfilm=" + id;
 
             using (var client = new HttpClient())
             {
-                HttpResponseMessage r = client.PostAsync(HostWebApi + querytype, new StringContent(querystring)).Result;
+                var q = HostWebApi + querytype + querystring;
+                HttpResponseMessage r = client.PostAsync(q, null).Result;
 
                 if (!r.IsSuccessStatusCode)
                 {
@@ -108,34 +102,24 @@ namespace WpfApp
             }
         }
 
-        public static BitmapImage GetPosterFromTMDB(int id)
+        public static BitmapImage GetPosterFromTMDB(String posterpath)
         {
-            string query = id + "?api_key=" + TheMovieDbKey;
-
-            using (var client = new HttpClient())
+            if (posterpath != null)
             {
-                HttpResponseMessage r = client.GetAsync(HostTMDB + query).Result;
-
-                if(!r.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    Console.WriteLine("[ShellModel][getImage]Api error");
-                    return null;
+                    return new BitmapImage(new Uri(posterpath));
                 }
-
-                //String rawJson = client.DownloadString(finalQuery);
-                string rawJson = r.Content.ReadAsStringAsync().Result;
-
-                var data = (JObject)JsonConvert.DeserializeObject(rawJson);
-                String newPath = data["poster_path"].Value<string>();
-
-                return new BitmapImage(new Uri(HostPosters + newPath));
             }
+            else
+                return (new BitmapImage());
+           
         }
 
         public static BitmapImage GetFilmTypeIconFromData(string name)
         {
             //AppContext.BaseDirectory +"/"+ name +".jpg"
-            var a = new Uri("C:\\Users\\Oli\\source\\repos\\hepl-csa-student20\\laboprognet-2326-thononolivier\\WpfApp\\Image\\" + name.ToLower() + ".png");
+            var a = new Uri("C:\\Users\\Oli\\source\\repos\\2326-ThononOlivier\\WpfApp\\Image\\" + name.ToLower() + ".png");
             Console.WriteLine(a.AbsolutePath);
             try
             {

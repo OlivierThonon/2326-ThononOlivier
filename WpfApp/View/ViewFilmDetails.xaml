@@ -13,9 +13,9 @@
             <Label x:Name="label1" Content="Id : " HorizontalAlignment="Left" Margin="90,291,0,0" VerticalAlignment="Top"/>
             <Label x:Name="IdFilm" Content="{Binding Path=IdFilm}" HorizontalAlignment="Left" Margin="139,291,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Grid Margin="280,0,0,0" Width="220" HorizontalAlignment="Left">
+        <Grid Margin="280,0,0,0" Width="auto" HorizontalAlignment="Left">
             <Label Content="Acteurs :" Margin="0,0,0,0" FontSize="15" HorizontalAlignment="Left"/>
-            <DataGrid Margin="0,40,0,40" Width="auto" ItemsSource="{Binding Actors}" AutoGenerateColumns="false" RowHeight="20" IsReadOnly="True" HorizontalAlignment="Left">
+            <DataGrid Margin="0,40,0,40" Width="auto" ItemsSource="{Binding Actors}" AutoGenerateColumns="false" RowHeight="20" IsReadOnly="True" HorizontalAlignment="Center" RowHeaderWidth="0">
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
                         <Setter Property="IsHitTestVisible" Value="false"/>
@@ -41,11 +41,11 @@
         </Grid>
         <Grid Margin="520,0,0,0" Width="160" HorizontalAlignment="Left">
             <Label Content="Genres :" Margin="0,0,0,0" FontSize="15"/>
-            <TextBlock x:Name="Genres" Margin="0,40,0,40" Width="150" HorizontalAlignment="left"/>
+            <TextBlock x:Name="Genres" Margin="0,40,10,40"/>
         </Grid>
         <Grid Margin="700,0,0,0" Width="250" HorizontalAlignment="Left">
             <Label Content="Commentaires :" Margin="0,0,0,0" FontSize="15"/>
-            <DataGrid  Margin="0,40,0,40" Width="auto" ItemsSource="{Binding Comments}" AutoGenerateColumns="false" RowHeight="20" IsReadOnly="True" HorizontalAlignment="Left">
+            <DataGrid  Margin="0,40,0,40" Width="auto" ItemsSource="{Binding Comments}" AutoGenerateColumns="false" RowHeight="20" IsReadOnly="True" HorizontalAlignment="Center" RowHeaderWidth="0">
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
                         <Setter Property="IsHitTestVisible" Value="false"/>

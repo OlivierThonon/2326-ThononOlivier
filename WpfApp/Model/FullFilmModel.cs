@@ -19,7 +19,7 @@ namespace WpfApp.Model
             FilmTypes = f.FilmTypes;
             Actors = f.Actors;
             Comments = f.Comments;
-            Poster = DataAccess.GetPosterFromTMDB(IdFilm);
+            Poster = DataAccess.GetPosterFromTMDB(f.PosterPath);
         }
 
         public BitmapImage Poster { get; set; }
