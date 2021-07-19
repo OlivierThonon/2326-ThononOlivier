@@ -5,20 +5,19 @@ namespace BrowserApp.Models
 {
     public class FullFilmModel
     {
-        public FullFilmModel(List<FullFilmDTO> films)
+        public FullFilmModel(FullFilmDTO films)
         {
-            Films = films;
+            Film = films;
         }
+
         public FullFilmModel()
         {
-            Films = new List<FullFilmDTO>();
+            Film = new FullFilmDTO();
         }
 
 
 
-        public List<FullFilmDTO> Films { get; set; }
-
-
+        public FullFilmDTO Film { get; set; }
 
         public override string ToString()
         {

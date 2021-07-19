@@ -35,6 +35,19 @@ namespace BusinessLogicLayer
 
             return (LActor);
         }
+        public List<LightActorDTO> GetListActorsByName(string name, int index, int nb)
+        {
+            var listactor = dalmanager.SelectActorWithName(name, index, nb);
+
+            List<LightActorDTO> LActor = new List<LightActorDTO>();
+
+            foreach (Actor a in listactor)
+            {
+                LActor.Add(new LightActorDTO(a.IdActor, a.Name, a.Surname));
+            }
+
+            return (LActor);
+        }
 
         public List<FilmTypeDTO> GetListFilmTypesByIdFilm(int IdF)
         {
@@ -51,7 +64,7 @@ namespace BusinessLogicLayer
 
         public List<FilmDTO> FindListFilmByPartialActorName(String name, int maxfilm)
         {
-            var listactor = dalmanager.SelectActorWithName(name);
+            var listactor = dalmanager.SelectActorWithName(name, 0, 100);
 
             List<FilmDTO> ListFilm = new List<FilmDTO>();
 

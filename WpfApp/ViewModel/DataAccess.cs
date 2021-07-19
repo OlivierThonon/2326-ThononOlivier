@@ -37,10 +37,10 @@ namespace WpfApp
             }
         }
 
-        public static void InsertComment(int id,string Content, int Rate)
+        public static void InsertComment(int id,string Content, int Rate, string username)
         {
             string querytype = "comments/";
-            string querystring = "?content=" + Content + "&rate=" + Rate + "&idfilm=" + id;
+            string querystring = "?username=" + username + "&content=" + Content + "&rate=" + Rate + "&idfilm=" + id;
 
             using (var client = new HttpClient())
             {

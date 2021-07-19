@@ -37,5 +37,19 @@ namespace WebApp.Controllers
                     return BadRequest("NoResultFoud");
             }
         }
+
+        //http://localhost:5000/actors/name=fred
+        [HttpGet("name={name}")]
+        public ActionResult GetListActorsByName(string name, int index, int numberactorbypage)
+        {
+            using (BllManager bllm = new BllManager())
+            {
+                var ret = bllm.GetListActorsByName(name, index, numberactorbypage);
+                if (ret != null)
+                    return Ok(ret);
+                else
+                    return BadRequest("NoResultFoud");
+            }
+        }
     }
 }

@@ -1,9 +1,12 @@
-﻿@model BrowserApp.Models.ListFilmModel
+﻿@model BrowserApp.Models.FilmModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center" >
+    <div style="margin:15px 7px 15px 4px;">
+        <input type="button" value="Rechercher" onclick="location.href='@Url.Action("", "Research")'" style="width:100px; height:40px; border-left:50px; border-right:50px" />
+    </div>
     <table class="table-bordered" style="margin-left: auto; margin-right: auto">
         <thead>
             <tr>
@@ -12,28 +15,36 @@
                 <th width="150">Titre</th>
                 <th width="100">Duree</th>
                 <th width="200">Note Moyenne</th>
+                <th width="100">Details</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Films)
             {
-                <tr height="120">
-                    <th scope="row">@item.IdFilm</th>
-                    <td>
-                        <img src="@item.PosterPath" height="110" alt="No poster found!" />
-                    </td>
-                    <td>@item.Title</td>
-                    <td>@item.RunTime</td>
-                    @if (!Double.IsNaN(item.VoteAverage))
-                    {
-                        <td>@item.VoteAverage</td>
-                    }
-                    else
-                    {
-                        <td>Pas de vote !</td>
-                    }
-                </tr>
+            <tr height="120">
+                <th scope="row">@item.IdFilm</th>
+                <td>
+                    <img src="@item.PosterPath" height="110" alt="No poster found!" />
+                </td>
+                <td>@item.Title</td>
+                <td>@item.RunTime</td>
+                @if (!Double.IsNaN(item.VoteAverage))
+                {
+                    <td>@item.VoteAverageAsString</td>
+                }
+                else
+                {
+                    <td>Pas de vote !</td>
+                }
+                <td><input type="button" value="Détails" id="@item.IdFilm" name="SelectedFilm" onclick="location.href='@Url.Action("", "FullFilm", new { idfilm = item.IdFilm })'"/></td>
+            </tr>
             }
         </tbody>
     </table>
+    <div style="margin-left: auto; margin-right: auto; margin-top:20px; height:50px;">
+        <div style="position:relative">
+            <input type="button" value="Précédent" onclick="location.href='@Url.Action("PreviousPage", "Film")'" style="width:100px; height:40px; border-left:50px; border-right:50px" />
+            <input type="button" value="Suivant" onclick="location.href='@Url.Action("NextPage", "Film")'" style="width:100px; height:40px; border-left:50px; border-right:50px" />
+        </div>
+    </div>
 </div>

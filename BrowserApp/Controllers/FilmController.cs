@@ -1,63 +1,58 @@
 ﻿using BrowserApp.Models;
 using DataTransferObject;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Diagnostics;
 using System.Net;
 
 namespace BrowserApp.Controllers
 {
     public class FilmController : Controller
     {
-        private ListFilmModel filmModel = new ListFilmModel();
+        private FilmModel filmModel = new FilmModel();
 
-        private int index = 0;
-        private int nbFilmByPage = 10;
+        private static int index;
+        private static int nbFilmByPage = 10;
 
 
-        public FilmController()
-        {
-            GetFilmFromApi();
-        }
+
+
+        public FilmController() { }
 
         public IActionResult Index()
         {
+            GetFilmFromApi();
+
             return View(filmModel);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-
-
-
-
-
-
-
-        private void NextPage()
+        public IActionResult NextPage()
         {
             index += nbFilmByPage;
 
             GetFilmFromApi();
+
+            return View("Index", filmModel);
         }
-        private void PreviousPage()
+        public IActionResult PreviousPage()
         {
             index -= nbFilmByPage;
             if (index <= 0)
                 index = 0;
 
             GetFilmFromApi();
+
+            return View("Index", filmModel);
         }
 
-        private void GetFilmFromApi ()
+
+        private void GetFilmFromApi()
         {
+            List<FilmDTO> lf;
+
             string querytype = "films/";
             string query = "?index=" + index + "&numberfilmbypage=" + nbFilmByPage;
 
@@ -67,11 +62,10 @@ namespace BrowserApp.Controllers
                 String finalQuery = (ConfigurationManager.AppSettings["ApiURL"] + querytype + query);
                 String rawJson = client.DownloadString(finalQuery);
 
-                List<FilmDTO> lf = JsonConvert.DeserializeObject<List<FilmDTO>>(rawJson);
-
-                filmModel = new ListFilmModel(lf);
-
+                lf = JsonConvert.DeserializeObject<List<FilmDTO>>(rawJson);
             }
+
+            filmModel = new FilmModel(lf);
         }
     }
 }

@@ -29,6 +29,26 @@ namespace BrowserApp.Models
         public String Title { get; set; }
         public DateTime RealseaseDate { get; set; }
         public float VoteAverage { get; set; }
+        public String VoteAverageAsString
+        {
+            get
+            {
+                String VoteAverageAsString = "";
+                int i = 0;
+                while ( i < VoteAverage)
+                {
+                    VoteAverageAsString += "★";
+                    i++;
+                }
+                while ( i < 5)
+                {
+                    VoteAverageAsString += "☆";
+                    i++;
+                }
+
+                return VoteAverageAsString;
+            }
+        }
         public string RunTime { get; set; }
         public String PosterPath { get; set; }
         public ICollection<CommentDTO> Comments { get; set; }

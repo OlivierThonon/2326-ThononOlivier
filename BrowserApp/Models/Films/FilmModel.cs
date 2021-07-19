@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace BrowserApp.Models
 {
-    public class ListFilmModel
+    public class FilmModel
     {
-        public ListFilmModel(List<FilmDTO> films)
+        public FilmModel(List<FilmDTO> films)
         {
             Films = new List<FilmUiModel>();
 
@@ -14,11 +14,11 @@ namespace BrowserApp.Models
                 Films.Add(new FilmUiModel(f));
             }
         }
-        public ListFilmModel(List<FilmUiModel> films)
+        public FilmModel(List<FilmUiModel> films)
         {
             Films = films;
         }
-        public ListFilmModel()
+        public FilmModel()
         {
             Films = new List<FilmUiModel>();
         }
@@ -26,6 +26,7 @@ namespace BrowserApp.Models
 
 
         public List<FilmUiModel> Films { get; set; }
+        public int SelectedFilm { get; set; }
 
 
 

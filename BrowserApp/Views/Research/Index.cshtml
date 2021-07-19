@@ -1,0 +1,90 @@
+﻿@model BrowserApp.Models.ResearchModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form action="/Research/Research" style="margin-bottom:15px; margin-top:15px;">
+        <label for="title">Titre : </label>
+        <input type="text" name="title" id="title" /><br />
+        <input type="hidden" name="name" id="name" />
+        <input type="submit" value="Rechercher" />
+    </form>
+    <br />
+    <form action="/Research/Research/" style="margin-bottom:15px; margin-top:15px;">
+        <label for="name">Nom : </label>
+        <input type="text" name="name" id="name" /><br />
+        <input type="hidden" name="title" id="title" />
+        <input type="submit" value="Rechercher" />
+    </form>
+    @if (Model.Films.Count > 0)
+    {
+        <h2 style="text-align:center; margin-right:auto; margin-left:auto">Films</h2>
+        <table class="table-bordered" style="margin-left: auto; margin-right: auto">
+            <thead>
+                <tr>
+                    <th width="50">Id</th>
+                    <th width="150">Affiche</th>
+                    <th width="150">Titre</th>
+                    <th width="100">Duree</th>
+                    <th width="200">Note Moyenne</th>
+                    <th width="100">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Films)
+                {
+                    <tr height="120">
+                        <th scope="row">@item.IdFilm</th>
+                        <td>
+                            <img src="@item.PosterPath" height="110" alt="No poster found!" />
+                        </td>
+                        <td>@item.Title</td>
+                        <td>@item.RunTime</td>
+                        @if (!Double.IsNaN(item.VoteAverage))
+                        {
+                            <td>@item.VoteAverageAsString</td>
+                        }
+                        else
+                        {
+                            <td>Pas de vote !</td>
+                        }
+                        <td><input type="button" value="Détails" id="@item.IdFilm" name="SelectedFilm" onclick="location.href='@Url.Action("", "FullFilm", new { idfilm = item.IdFilm })'" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div style="margin-left: auto; margin-right: auto; margin-top:20px; height:50px;">
+            <div style="position:relative">
+                <input type="button" value="Précédent" onclick="location.href='@Url.Action("PreviousFilmPage", "Research")'" style="width:100px; height:40px; border-left:50px; border-right:50px" />
+                <input type="button" value="Suivant" onclick="location.href='@Url.Action("NextFilmPage", "Research")'" style="width:100px; height:40px; border-left:50px; border-right:50px" />
+            </div>
+        </div>
+    }
+    @if (Model.Actors.Count > 0)
+    {
+        <h2 style="text-align:center; margin-right:auto; margin-left:auto">Acteurs</h2>
+        <table style="align-content:center; margin-right:auto; margin-left:auto">
+            <tr>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Nombre de films</td>
+                <td>Détails</td>
+            </tr>
+            @foreach (ActorUiModel a in Model.Actors)
+            {
+                <tr>
+                    <td>@a.Name</td>
+                    <td>@a.Surname</td>
+                    <td>@a.NbFilm</td>
+                    <td><input type="button" value="Détails" onclick="location.href='@Url.Action("", "Actor", a)'" /></td>
+                </tr>
+            }
+        </table>
+        <div style="position:relative; margin-left: auto; margin-right: auto; margin-top:20px; height:50px;">
+            <input type="button" value="Précédent" onclick="location.href='@Url.Action("PreviousActorPage", "Research")'" style="width:100px; height:40px; border-left:50px; border-right:50px" />
+            <input type="button" value="Suivant" onclick="location.href='@Url.Action("NextActorPage", "Research")'" style="width:100px; height:40px; border-left:50px; border-right:50px" />
+        </div>
+    }
+
+</div>

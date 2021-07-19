@@ -1,0 +1,80 @@
+﻿@using DataTransferObject;
+@model BrowserApp.Models.FullFilmModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 style="margin-bottom:20px">@Model.Film.Title</h1>
+    <h2 style="text-align:center; margin-right:auto; margin-left:auto">Genres</h2>
+    <table style="align-content:center; margin-right:auto; margin-left:auto">
+        @foreach (FilmTypeDTO ft in Model.Film.FilmTypes)
+        {
+            <tr>
+                <td>@ft.Name</td>
+            </tr>
+        }
+    </table>
+
+    <p></p>
+
+    <h2 style="text-align:center; margin-right:auto; margin-left:auto">Acteurs</h2>
+    <table style="align-content:center; margin-right:auto; margin-left:auto">
+        <tr>
+            <td>Nom</td>
+            <td>Prénom</td>
+            <td>Nombre de films</td>
+            <td>Détails</td>
+        </tr>
+        @foreach (ActorDTO a in Model.Film.Actors)
+        {
+            <tr>
+                <td>@a.Name</td>
+                <td>@a.Surname</td>
+                <td>@a.NbFilm</td>
+                <td><input type="button" value="Détails" onclick="location.href='@Url.Action("", "Actor", a)'" /></td>
+            </tr>
+        }
+    </table>
+
+    <p></p>
+
+    <div>
+        <h2 style="text-align:center; margin-right:auto; margin-left:auto">Commantaires</h2>
+        <table style="align-content:center; margin-right:auto; margin-left:auto">
+            <tr>
+                <td>Username</td>
+                <td>Content</td>
+                <td>Rate(x/5)</td>
+                <td>Post Date</td>
+            </tr>
+            @foreach (CommentDTO c in Model.Film.Comments)
+            {
+                <tr>
+                    <td>@c.Username</td>
+                    <td>@c.Content</td>
+                    <td>@c.Rate/5</td>
+                    <td>@c.Date.ToShortDateString()</td>
+                </tr>
+            }
+        </table>
+        <form action="/FullFilm/AddComment/" style="margin-bottom:15px; margin-top:15px;">
+            <label for="pseudo">Pseudo : </label>
+            <input type="text" name="pseudo" id="pseudo" />
+            <label for="content">Commentaire : </label>
+            <input type="text" name="content" id="content" />
+            <label for="rate">Note : </label>
+            <input type="range" list="tickmarks" step="1" max="5" min="0" name="rate" id="rate" />
+            <datalist id="tickmarks">
+                <option value="0" label="0"/>
+                <option value="1" label="1"/>
+                <option value="2" label="2"/>
+                <option value="3" label="3"/>
+                <option value="4" label="4"/>
+                <option value="5" label="5"/>
+            </datalist>
+
+            <input type="submit" value="Poster" />
+        </form>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model BrowserApp.Models.ActorModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div>
+        <p>@Model.Actor.Name</p>
+        <p>@Model.Actor.Surname</p>
+        <p>Né(e) le @Model.Actor.BirthDate.Value.ToShortDateString()</p>
+        <p>@Model.Actor.Age</p>
+    </div>
+    <div>
+        <img src="@Model.Actor.ProfileImagePath" width="150" alt="No poster found!" /><br />
+    </div>
+    <div>
+        <p>@Model.Actor.Bio</p>
+    </div>
+</div>

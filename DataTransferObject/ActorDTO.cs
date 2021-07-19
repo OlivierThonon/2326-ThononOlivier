@@ -20,7 +20,6 @@ namespace DataTransferObject
         public int IdActor { get; set; }
         public String Name { get; set; }
         public String Surname { get; set; }
-    
         public int NbFilm { get; set; }
         public override string ToString()
         {

@@ -19,7 +19,7 @@ namespace WpfApp.ViewModel
 
         public void AjouterCommentaire(int id, string Content, int Rate, string username)
         {
-            DataAccess.InsertComment(id, Content, Rate);
+            DataAccess.InsertComment(id, Content, Rate, username);
             film.Comments.Add(new CommentDTO(Content, Rate, username, DateTime.Now));
         }
     }

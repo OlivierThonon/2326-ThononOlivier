@@ -10,7 +10,7 @@ namespace WebApp.Controllers
     [Route("filmapi/films")]
     public class FilmController : Controller
     {
-        //http://localhost:5000/films/details/?index=0&numberfilmbypage=10
+        //http://localhost:5000/filmapi/films/details/?index=0&numberfilmbypage=10
         [HttpGet]
         public ActionResult GetPageOfFilmOrderByTitle(int index, int numberfilmbypage)
         {
@@ -27,7 +27,7 @@ namespace WebApp.Controllers
             }
         }
 
-        //http://localhost:5000/films/details/idfilm=2
+        //http://localhost:5000/filmapi/films/details/idfilm=2
         [HttpGet("details/idfilm={id}")]
         public ActionResult GetFullFilmDetailsByIdFilm(int id)
         {
@@ -41,7 +41,7 @@ namespace WebApp.Controllers
             }
         }
 
-        //http://localhost:5000/films/actorname=ste
+        //http://localhost:5000/filmapi/films/actorname=ste
         [HttpGet("actorname={actorname}")]
         public ActionResult FindListFilmByPartialActorName(string actorname, int maxfilm = 10)
         {
@@ -55,7 +55,7 @@ namespace WebApp.Controllers
             }
         }
 
-        //http://localhost:5000/films/title=si
+        //http://localhost:5000/filmapi/films/title=si
         [HttpGet("title={title}")]
         public ActionResult GetFilmListWithName(string title, int index, int numberfilmbypage)
         {

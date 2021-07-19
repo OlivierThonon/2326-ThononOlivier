@@ -41,9 +41,9 @@ namespace DataAccessLayer
             return filmContext.Films.Include("Comments").OrderBy(f => f.Title).Where(f => f.Title.ToLower().Contains(name.ToLower())).Skip(index).Take(numberbypage);
         }
 
-        public IQueryable<Actor> SelectActorWithName(String name)
+        public IQueryable<Actor> SelectActorWithName(String name, int index, int numberbypage)
         {
-            return filmContext.Actors.Include("Films").Where(a => a.Name.ToLower().Contains(name.ToLower()));
+            return filmContext.Actors.Include("Films").Where(a => a.Name.ToLower().Contains(name.ToLower())).Skip(index).Take(numberbypage);
         }
 
         public IQueryable<Actor> SelectActorNbFilmMin(int NbFilmMin)
